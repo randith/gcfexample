@@ -9,15 +9,15 @@ pushd "$(dirname "$0")"
 REGION=us
 
 # [[ -z "${2}" ]] && echo "missing second argument ENVIRONMENT (i.e. staging)" && exit 1
-ENVIRONMENT=sandbox
+ENVIRONMENT=snapshot
 
 # [[ -z "${3}" ]] && echo "missing third argument GOOGLE_COMPUTE_ZONE (i.e. us-central1)" && exit 1
 GOOGLE_COMPUTE_ZONE=us-central1
 
 # [[ -z "${4}" ]] && echo "missing fourth argument GCP_PROJECT (i.e. ce-staging-216319)" && exit 1
-GCP_PROJECT=ce-admin-218121
+GCP_PROJECT=ce-snapshot-216319
 
 
-gcloud functions deploy gcfexample --trigger-http --region ${GOOGLE_COMPUTE_ZONE} --runtime go111 --timeout 540 --memory 2gb --project ${GCP_PROJECT}
+gcloud functions deploy Gcfexample --trigger-http --region ${GOOGLE_COMPUTE_ZONE} --runtime go111 --timeout 100 --memory 1gb --project ${GCP_PROJECT}
 
 popd
